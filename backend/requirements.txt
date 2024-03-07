@@ -1,0 +1,11 @@
+Flask
+Flask-JWT-Extended
+Flask-Smorest
+Flask-SQLAlchemy
+passlib
+marshmallow
+python-dotenv
+gunicorn
+Flask-Migrate
+mysql-connector-python==8.0.27
+flask-cors
