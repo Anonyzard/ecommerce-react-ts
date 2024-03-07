@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 
 from db import db
+import os
 from blocklist import BLOCKLIST
 from passlib.hash import pbkdf2_sha256
 
@@ -14,7 +15,7 @@ from resources.tag import blp as TagBlueprint
 from resources.order import blp as OrderBlueprint
 
 from models import *
-
+print("Iniciando flask...")
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -30,6 +31,7 @@ def create_app(db_url=None):
     passwd='password'
     ip='172.27.0.2'
     ip='localhost'
+    ip = os.getenv("DATABASE_HOST")
     # ip='/run/mysqld/mysqld.sock'
     port='3306'
     bd='bdflasksqlalchemy'

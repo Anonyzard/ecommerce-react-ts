@@ -76,7 +76,7 @@ class Order(MethodView):
         last_order = OrderModel.query.filter_by(
             user_id=user).order_by(
                 OrderModel.id.desc()).first()
-        items = []
+        # items = []
         item_query = ItemModel.query.filter_by(id=int(item_id)).first()
         # item_query = ItemModel.query.get(int(item_id))
         if not last_order or last_order.completed:
@@ -89,7 +89,7 @@ class Order(MethodView):
             if order.total is None:
                 order.total=0
             order.total+=item_query.price
-            items.append({"id":item_query.id})
+            #items.append({"id":item_query.id})
         else:
             last_order.items.append(item_query)
             last_order.total+=item_query.price
@@ -97,7 +97,7 @@ class Order(MethodView):
             # print("BFOR")
             for item in order.items:
                 print(item)
-                items.append({"id":item.id})
+                #items.append({"id":item.id})
         # if order_data["completed"]:
         #     print("Done")
         #     order.completed=order_data["completed"]

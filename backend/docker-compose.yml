@@ -3,7 +3,7 @@ volumes:
   data:
 
 networks:
-  db:
+  dbflask:
     driver: bridge
 
 services:
@@ -11,8 +11,12 @@ services:
     build: .
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
     networks:
-      db:
+      - dbflask
 
   db:
     image: mariadb
@@ -26,4 +30,4 @@ services:
     ports:
       - "3306:3306"
     networks:
-      db:
+      - dbflask
